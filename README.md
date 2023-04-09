@@ -1,5 +1,5 @@
 # Dotfiles
-My arch linux awesomeWM dotfiles. 
+My arch linux awesome window manager dotfiles. 
 
 # About awesome
 
