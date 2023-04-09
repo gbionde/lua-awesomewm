@@ -7,5 +7,4 @@ My arch linux awesomeWM dotfiles.
 
 It is fully configurated and customized with .lua, but you can extend it to .py if you wish. 
 
-(Read about awesome here)[https://awesomewm.org/]
-
+[Start learning about awesome here](https://awesomewm.org/)
