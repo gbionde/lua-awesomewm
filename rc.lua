@@ -2,6 +2,9 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- Home env variable
+local home = os.getenv("HOME")
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -57,8 +60,9 @@ end
 
 -- Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/gbionde/.config/awesome/themes/theme.lua")
+-- beautiful.init("/themes/theme.lua")
+local theme_path = home .. "/.config/awesome/themes/theme.lua"
+beautiful.init(home .. "/.config/awesome/themes/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -562,7 +566,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-
--- Custom startup
--- Set wallpaper
-awful.spawn.with_shell("feh --bg-fill $HOME/Pictures/Wallpaper/samurai-girl.jpg")
