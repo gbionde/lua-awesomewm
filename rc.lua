@@ -57,8 +57,8 @@ end
 
 -- Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
--- beautiful.init("~/.config/awesome/themes/mytheme/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/gbionde/.config/awesome/themes/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -107,7 +107,7 @@ mymainmenu = awful.menu({
 })
 
 mylauncher = awful.widget.launcher({ 
-    image = beautiful.awesome_icon,
+    -- image = beautiful.awesome_icon,
     menu = mymainmenu 
 })
 
@@ -122,7 +122,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %a, %d %b %Y, %H:%M ", 60, "America/Sao_Paulo")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -244,7 +244,6 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
-            s.mylayoutbox,
         },
     }
 end)
@@ -321,7 +320,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Shift" }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -562,3 +561,8 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+-- Custom startup
+-- Set wallpaper
+awful.spawn.with_shell("feh --bg-fill $HOME/Pictures/Wallpaper/samurai-girl.jpg")
