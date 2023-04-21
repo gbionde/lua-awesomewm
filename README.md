@@ -16,4 +16,4 @@ It is fully configurated and customized with .lua, but you can extend it to .py 
 
 # About gruvbox
 
-My current color scheme, read more about it on [gruvbox official github repos](https://github.com/morhetz/gruvbox.)
+My current color scheme, read more about it on [gruvbox official github repos.](https://github.com/morhetz/gruvbox)
