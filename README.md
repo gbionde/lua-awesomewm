@@ -1,5 +1,5 @@
 # Dotfiles
-My arch linux awesome window manager dotfiles. 
+My arch linux awesome window manager dotfiles.
 
 # Packages
 - [Feh](https://wiki.archlinux.org/title/feh): lightweight, highly configurable image viewer aimed mainly at users of command line interfaces. 
@@ -13,3 +13,7 @@ Awesome is a highly configurable, next generation framework window manager for X
 It is fully configurated and customized with .lua, but you can extend it to .py if you wish. 
 
 [Start learning about awesome here](https://awesomewm.org/)
+
+# About gruvbox
+
+My current color scheme, read more about it on [gruvbox official github repos](https://github.com/morhetz/gruvbox.)
