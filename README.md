@@ -1,5 +1,5 @@
 # Dotfiles
-My arch linux awesome window manager dotfiles.
+My arch linux awesome window manager dotfiles (nvidia drivers).
 
 - [Wallpaper](https://gruvbox-wallpapers.onrender.com/)
 - [Color Scheme](https://github.com/morhetz/gruvbox) (gruvbox)
