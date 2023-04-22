@@ -1,13 +1,20 @@
 # Dotfiles
 My arch linux awesome window manager dotfiles (nvidia drivers).
 
+<img src="screenshots/full.png" />
+<img src="screenshots/neofetch.png" />
+
 - [Wallpaper](https://gruvbox-wallpapers.onrender.com/)
 - [Color Scheme](https://github.com/morhetz/gruvbox) (gruvbox)
+
 
 # Packages
 - [Feh](https://wiki.archlinux.org/title/feh): image viewer aimed mainly at users of command line interfaces. 
 - [Thunar](https://wiki.archlinux.org/title/thunar): file explorer, default for XFCE desk env.
 - [Kitty](https://wiki.archlinux.org/title/kitty): terminal emulator.
+- [Picom](https://github.com/yshui/picom): X11 compositor.
+- [Zsh](https://www.zsh.org/): zsh terminal shell.  
+- [Scrot](https://github.com/resurrecting-open-source-projects/scrot): command line screen capture utility
 
 # About awesome
 
