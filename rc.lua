@@ -62,11 +62,13 @@ beautiful.init(home .. "/.config/awesome/themes/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "kitty"
+local explorer = "thunar"
 local editor = os.getenv("EDITOR") or "nano"
 local editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 local modkey = "Mod4"
+local altkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = { awful.layout.suit.tile, }
@@ -78,6 +80,8 @@ local mymainmenu = awful.menu({
     
     items = {
         { "Terminal", terminal },
+        { "Firefox", "firefox" },
+        { "Thunar", explorer},
         { "Restart", awesome.restart },
         { "Quit", function() awesome.quit() end },
     }
@@ -92,7 +96,7 @@ menubar.utils.terminal = terminal
 
 -- {{{ Wibar
 -- Create a textclock widget
-local mytextclock = wibox.widget.textclock(" %B %d, %Y - %H:%M ", 60, "America/Sao_Paulo")
+local mytextclock = wibox.widget.textclock(" |  %H:%M ", 60, "America/Sao_Paulo")
 
 -- Battery widget
 local mybattery = wibox.widget {
@@ -107,8 +111,7 @@ local function update_battery_widget(widget)
     widget:set_text(" " .. battery_level .. "% ")
 end
 
-update_battery_widget(mybattery)
-gears.timer.start_new(10, function() update_battery_widget(mybattery) return true end)
+gears.timer.start_new(60, function() update_battery_widget(mybattery) return true end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -247,7 +250,7 @@ globalkeys = gears.table.join(
               {description = "go back", group = "tag"}),
 
     -- Layout manipulation
-    awful.key({ "Mod1", }, "Tab",
+    awful.key({ altkey, }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
@@ -261,6 +264,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     
+    awful.key({ modkey, }, "e", function () awful.spawn(explorer) end,
+              {description = "open file explorer", group = "launcher"}),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     
@@ -291,7 +297,7 @@ globalkeys = gears.table.join(
 
     -- Custom
     -- Define the Alt+Shift keybinding to switch keyboard layout
-    awful.key({ "Mod1" }, "Shift_L", function()
+    awful.key({ altkey }, "Shift_L", function()
         -- Get the current keyboard layout
         local current_layout = io.popen("setxkbmap -query | awk '/layout/ {print $2}'"):read("*line")
 
@@ -522,7 +528,18 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 
--- custom startups
-awful.spawn.with_shell("xrandr --output HDMI-1-0 --auto --right-of eDP-1")
-awful.spawn.with_shell("xrandr --output eDP-1 --brightness 0.4")
-awful.spawn.with_shell("xrandr --output HDMI-1-0 --brightness 0.7")
+-- {{{ custom startups 
+-- start second HDMI monitor
+awful.spawn.with_shell("xrandr --output HDMI-1-0 --auto --right-of eDP-1") 
+
+-- setting default brightness on both monitors
+awful.spawn.with_shell("xrandr --output eDP-1 --brightness 0.5")
+awful.spawn.with_shell("xrandr --output HDMI-1-0 --brightness 0.5")
+awful.spawn.with_shell("xbacklight -set 70")
+
+-- starting picom compositor
+awful.spawn.with_shell("picom")
+
+-- call battery widget on startup
+update_battery_widget(mybattery)
+-- }}}

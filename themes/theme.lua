@@ -1,4 +1,4 @@
--- Home env variable
+-- vars
 local home = os.getenv("HOME")
 
 local theme_assets = require("beautiful.theme_assets");
@@ -12,32 +12,44 @@ local themes_path = gfs.get_themes_dir();
 local theme = {
 
     -- fonts
-    font          = "sans 10",
+    font          = "sans 6",
     
     -- background
-    bg_normal     = "#3E445E",
-    bg_focus      = "#3E445E",
-    bg_urgent     = "#FF0000",
-    bg_minimize   = "#3E445E",
+    bg_normal     = "#282828",
+    bg_focus      = "#3c3836",
+    bg_urgent     = "#fb4934",
+    bg_minimize   = "#282828",
     bg_systray    = bg_normal,
 
     -- foreground
-    fg_normal     = "#D6DEEB",
-    fg_focus      = "#D6DEEB",
-    fg_urgent     = "#ffffff",
-    fg_minimize   = "#ffffff",
-    
-    -- gap and borders
-    useless_gap   = dpi(10),
-    border_width  = dpi(0),
-    border_normal = "#292D3E",
-    border_focus  = "#78DCE8",
-    border_marked = "#91231c"
+    fg_normal     = "#ebdbb2",
+    fg_focus      = "#ebdbb2",
+    fg_urgent     = "#ebdbb2",
+    fg_minimize   = "#ebdbb2",
 
+    -- gap 
+    useless_gap   = dpi(10),
+
+    -- borders
+    border_width  = dpi(0),
+    border_normal = "#282828",
+    border_focus  = "#fabd2f",
+    border_marked = "#fb4934",
+
+    -- menu
+    menu_height = dpi(25),
+    menu_width  = dpi(135),
+
+    -- icon theme for application icons. 
+    -- if not set then the icons from /usr/share/icons and /usr/share/icons/hicolor will be used.
+    icon_theme = nil,
+
+    -- wallpaper
+    wallpaper = home .. "/pictures/wallpaper/gruv-girl.png",
 }
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(2)
 
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
@@ -47,21 +59,9 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
 
--- Variables set for theming the menu:
--- theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(25)
-theme.menu_width  = dpi(135)
-
--- Define the image to load
-theme.wallpaper = home .. "/Pictures/Wallpaper/kanagawa-wave.png"
-
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
-
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
 
 return theme
