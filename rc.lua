@@ -241,13 +241,13 @@ globalkeys = gears.table.join(
 
     -- Workspaces
     awful.key({ modkey, }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
+        {description = "view previous", group = "tag"}),
 
     awful.key({ modkey, }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+        {description = "view next", group = "tag"}),
 
     awful.key({ modkey, }, "Tab", awful.tag.history.restore,
-              {description = "go back", group = "tag"}),
+        {description = "go back", group = "tag"}),
 
     -- Layout manipulation
     awful.key({ altkey, }, "Tab",
@@ -262,16 +262,22 @@ globalkeys = gears.table.join(
 
     -- Standard program
     awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+        {description = "open a terminal", group = "launcher"}),
     
+    awful.key({ modkey, "Shift" }, "s", function() awful.util.spawn("scrot -s") end,
+        {description = "take screenshot", group = "screenshot"}),
+
+    awful.key({ }, "Print", function() awful.util.spawn("scrot") end,
+        {description = "take screenshot", group = "screenshot"}),
+
     awful.key({ modkey, }, "e", function () awful.spawn(explorer) end,
-              {description = "open file explorer", group = "launcher"}),
+        {description = "open file explorer", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
+        {description = "reload awesome", group = "awesome"}),
     
     awful.key({ modkey, "Shift" }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
+        {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey, "Shift" }, "n",
         function ()
@@ -288,11 +294,11 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+        {description = "run prompt", group = "launcher"}),
 
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+        {description = "show the menubar", group = "launcher"}),
 
 
     -- Custom
@@ -320,19 +326,19 @@ clientkeys = gears.table.join(
         {description = "toggle fullscreen", group = "client"}),
 
     awful.key({ modkey, }, "q",      function (c) c:kill()                         end,
-              {description = "close", group = "client"}),
+        {description = "close", group = "client"}),
 
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
-              {description = "toggle floating", group = "client"}),
+        {description = "toggle floating", group = "client"}),
 
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
-              {description = "move to master", group = "client"}),
+        {description = "move to master", group = "client"}),
 
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
+        {description = "move to screen", group = "client"}),
 
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
+        {description = "toggle keep on top", group = "client"}),
 
     awful.key({ modkey,           }, "n",
         function (c)
