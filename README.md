@@ -15,6 +15,8 @@ My arch linux awesome window manager dotfiles (nvidia drivers).
 - [Picom](https://github.com/yshui/picom): X11 compositor.
 - [Zsh](https://www.zsh.org/): zsh terminal shell.  
 - [Scrot](https://github.com/resurrecting-open-source-projects/scrot): command line screen capture utility
+- [Xbacklight](https://man.archlinux.org/man/community/acpilight/xbacklight.1.en): query/set display backlight. 
+
 
 # About awesome
 
